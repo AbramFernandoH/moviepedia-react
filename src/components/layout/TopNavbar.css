@@ -1,0 +1,21 @@
+.moviepedia-brand {
+  font-family: 'Mali', cursive;
+  color: cornflowerblue;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.moviepedia-brand:hover {
+  color: cornflowerblue;
+}
+
+.navbar-toggler {
+  font-size: 24px;
+  outline-color: transparent;
+  border: none;
+}
+
+.navbar-toggler, .navbar-nav .nav-link {
+  color: white!important;
+}
