@@ -1,3 +1,7 @@
+.TopNavbar {
+  z-index: 1;
+}
+
 .moviepedia-brand {
   font-family: 'Mali', cursive;
   color: cornflowerblue;

@@ -1,13 +1,12 @@
 import { useParams } from 'react-router-dom'
 
-function MovieDetail() {
+function TVShowDetail() {
   const params = useParams()
-  
   return (
     <div>
-      movie with id {params.id}
+      tv shows with id {params.id}
     </div>
   );
 }
 
-export default MovieDetail;
+export default TVShowDetail;

@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react"
+import { useNavigate } from 'react-router-dom'
 
 // Import Swiper styles
 import "swiper/css"
@@ -10,10 +11,18 @@ import './cardLists.css'
 // import required modules
 import { FreeMode } from "swiper"
 
-function CardLists({ data }) {
+function CardLists({ data, sectionName }) {
   const [datas, setDatas] = useState(data)
+  const navigate = useNavigate()
 
   const posterPrefix = process.env.REACT_APP_IMAGE_PREFIX_URL
+
+  const handleClick = id => {
+    if(sectionName === 'movies'){
+      return navigate(`/movie/${id}`)
+    }
+    return navigate(`/tvshow/${id}`)
+  }
 
   return (
     <div className="card-lists position-relative h-100">
@@ -53,7 +62,7 @@ function CardLists({ data }) {
       >
         {
           datas.map(d => (
-            <SwiperSlide className="d-flex flex-column justify-content-center align-items-center" key={d.id}>
+            <SwiperSlide className="d-flex flex-column justify-content-center align-items-center" key={d.id} onClick={() => handleClick(d.id)}>
               {d.poster_path && <img src={`${posterPrefix}${d.poster_path}`} alt={d.id} className='card-poster' />}
               <p>{d.title || d.name}</p>
             </SwiperSlide>

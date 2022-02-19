@@ -5,7 +5,7 @@ import './TopNavbar.css'
 
 function TopNavbar() {
   return (
-    <Navbar expand="lg" className='position-absolute top-0 left-0 w-100'>
+    <Navbar expand="lg" className='TopNavbar position-absolute top-0 left-0 w-100'>
       <Container>
         <Link className="moviepedia-brand" to="/">Moviepedia</Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" children={<FaBars />} />

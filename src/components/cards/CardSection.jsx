@@ -8,7 +8,7 @@ function CardSection({ sectionName, title, destination = '', data = [] }) {
         <h3>{ title }</h3>
         <Link to={destination}>See more</Link>
       </div>
-      <CardLists data={data} />
+      <CardLists data={data} sectionName={sectionName} />
     </div>
   );
 }
