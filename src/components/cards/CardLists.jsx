@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react"
 
 // Import Swiper styles
@@ -9,12 +10,40 @@ import './cardLists.css'
 // import required modules
 import { FreeMode } from "swiper"
 
-function CardLists() {
+function CardLists({ data }) {
+  const [datas, setDatas] = useState(data)
+
+  const posterPrefix = process.env.REACT_APP_IMAGE_PREFIX_URL
+
   return (
     <div className="card-lists position-relative h-100">
       <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
+        breakpoints={{
+          100: {
+            slidesPerView: 1,
+            spaceBetween: 0
+          },
+          576: {
+            slidesPerView: 2,
+            spaceBetween: 30
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 20
+          },
+          992: {
+            slidesPerView: 4,
+            spaceBetween: 10
+          },
+          1200: {
+            slidesPerView: 5,
+            spaceBetween: 10
+          },
+          1400: {
+            slidesPerView: 6,
+            spaceBetween: 10
+          },
+        }}
         freeMode={true}
         pagination={{
           clickable: true,
@@ -22,15 +51,14 @@ function CardLists() {
         modules={[FreeMode]}
         className="mySwiper w-100"
       >
-        <SwiperSlide className="d-flex justify-content-center align-items-center">Slide 1</SwiperSlide>
-        <SwiperSlide className="d-flex justify-content-center align-items-center">Slide 2</SwiperSlide>
-        <SwiperSlide className="d-flex justify-content-center align-items-center">Slide 3</SwiperSlide>
-        <SwiperSlide className="d-flex justify-content-center align-items-center">Slide 4</SwiperSlide>
-        <SwiperSlide className="d-flex justify-content-center align-items-center">Slide 5</SwiperSlide>
-        <SwiperSlide className="d-flex justify-content-center align-items-center">Slide 6</SwiperSlide>
-        <SwiperSlide className="d-flex justify-content-center align-items-center">Slide 7</SwiperSlide>
-        <SwiperSlide className="d-flex justify-content-center align-items-center">Slide 8</SwiperSlide>
-        <SwiperSlide className="d-flex justify-content-center align-items-center">Slide 9</SwiperSlide>
+        {
+          datas.map(d => (
+            <SwiperSlide className="d-flex flex-column justify-content-center align-items-center" key={d.id}>
+              {d.poster_path && <img src={`${posterPrefix}${d.poster_path}`} alt={d.id} className='card-poster' />}
+              <p>{d.title || d.name}</p>
+            </SwiperSlide>
+          ))
+        }
       </Swiper>
     </div>
   );
