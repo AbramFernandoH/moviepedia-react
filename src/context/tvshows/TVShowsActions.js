@@ -22,3 +22,36 @@ export const getAllTvShows = async() => {
     console.log(e)
   }
 }
+
+export const getTVShowsSection = async (section) => {
+  const params = new URLSearchParams({
+    api_key: API_KEY
+  })
+
+  try {
+    if(section === 'on_air'){
+      const moviesSection = await tvshows.get(`/tv/on_the_air?${params}`)
+      return moviesSection.data.results
+    }
+    const moviesSection = await tvshows.get(`/tv/${section}?${params}`)
+    return moviesSection.data.results
+  } catch(e) {
+    console.log(e)
+  }
+}
+
+export const getTVShowDetail = async (id) => {
+  const params = new URLSearchParams({
+    api_key: API_KEY
+  })
+  
+  const getDetails = tvshows.get(`/tv/${id}?${params}`)
+  const getCast = tvshows.get(`/tv/${id}/credits?${params}`)
+
+  try {
+    const [details, casts] = await Promise.all([getDetails, getCast])
+    return { tvShowDetails: details.data, tvShowCasts: casts.data.cast }
+  } catch(e) {
+    console.log(e)
+  }
+}

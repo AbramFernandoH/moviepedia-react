@@ -2,6 +2,7 @@ import { createContext, useReducer } from 'react'
 import movieReducer from './MoviesReducer'
 
 const MovieContext = createContext()
+MovieContext.displayName = 'Movie'
 
 export const MovieProvider = ({ children }) => {
   const initialState = {
@@ -9,10 +10,10 @@ export const MovieProvider = ({ children }) => {
     moviesLoad: false
   }
 
-  const [state, dispatch] = useReducer(movieReducer, initialState)
+  const [state, dispatchMovie] = useReducer(movieReducer, initialState)
 
   return(
-    <MovieContext.Provider value={{ ...state, dispatch }}>
+    <MovieContext.Provider value={{ ...state, dispatchMovie }}>
       {children}
     </MovieContext.Provider>
   )

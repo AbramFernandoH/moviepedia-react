@@ -23,3 +23,32 @@ export const getAllMovies = async() => {
     console.log(e)
   }
 }
+
+export const getMoviesSection = async (section) => {
+  const params = new URLSearchParams({
+    api_key: API_KEY
+  })
+
+  try {
+    const moviesSection = await movies.get(`/movie/${section}?${params}`)
+    return moviesSection.data.results
+  } catch(e) {
+    console.log(e)
+  }
+}
+
+export const getMovieDetail = async (id) => {
+  const params = new URLSearchParams({
+    api_key: API_KEY
+  })
+  
+  const getDetails = movies.get(`/movie/${id}?${params}`)
+  const getCast = movies.get(`/movie/${id}/credits?${params}`)
+
+  try {
+    const [details, casts] = await Promise.all([getDetails, getCast])
+    return { movieDetails: details.data, movieCasts: casts.data.cast }
+  } catch(e) {
+    console.log(e)
+  }
+}

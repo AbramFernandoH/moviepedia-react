@@ -2,6 +2,7 @@ import { createContext, useReducer } from 'react'
 import TVShowsReducer from './TVShowsReducer'
 
 const TVShowsContext = createContext()
+TVShowsContext.displayName = 'TVShows'
 
 export const TVShowsProvider = ({ children }) => {
   const initialState = {
@@ -9,10 +10,10 @@ export const TVShowsProvider = ({ children }) => {
     tvshowsLoad: false
   }
 
-  const [state, dispatch] = useReducer(TVShowsReducer, initialState)
+  const [state, dispatchTvShow] = useReducer(TVShowsReducer, initialState)
 
   return(
-    <TVShowsContext.Provider value={{ ...state, dispatch }}>
+    <TVShowsContext.Provider value={{ ...state, dispatchTvShow }}>
       {children}
     </TVShowsContext.Provider>
   )

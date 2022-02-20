@@ -1,12 +1,7 @@
-.card-lists {
-  background-color: #eee;
-}
-
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
-  height: 250px;
+  height: 300px;
 }
 
 .swiper-slide img {

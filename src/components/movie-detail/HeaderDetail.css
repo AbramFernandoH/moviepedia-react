@@ -1,0 +1,12 @@
+.HeaderDetail {
+  padding: 1rem 2rem;
+}
+
+.HeaderDetail .header-detail-poster {
+  margin-right: 1rem;
+}
+
+.HeaderDetail .header-detail-poster img{
+  height: 450px;
+  width: 300px;
+}

@@ -6,16 +6,16 @@ import CardSection from '../components/cards/CardSection'
 import { getAllMovies } from '../context/movies/MoviesActions'
 
 function Movies() {
-  const { movies, moviesLoad, dispatch } = useContext(MovieContext)
+  const { movies, moviesLoad, dispatchMovie } = useContext(MovieContext)
   
   useEffect(() => {
-    dispatch({ type: 'SET_LOADING' })
+    dispatchMovie({ type: 'SET_LOADING' })
     const fetchData = async () => {
       const res = await getAllMovies()
-      await dispatch({ type: 'GET_ALL_MOVIES', payload: res })
+      await dispatchMovie({ type: 'GET_ALL_MOVIES', payload: res })
     }
     fetchData()
-  }, [dispatch])
+  }, [dispatchMovie])
 
   return (
     <div>
@@ -26,13 +26,13 @@ function Movies() {
           <HeaderSlider movies={movies.moviesNowPlaying} />
           <Container>
             <div className="top-rated mt-5">
-              <CardSection sectionName='movies' title='Top Rated' destination='' data={movies.moviesTopRated} />
+              <CardSection sectionName='movies' title='Top Rated' destination='/movies/top-rated' data={movies.moviesTopRated} />
             </div>
             <div className="popular mt-5">
-              <CardSection sectionName='movies' title='Popular' destination='' data={movies.moviesPopular} />
+              <CardSection sectionName='movies' title='Popular' destination='/movies/popular' data={movies.moviesPopular} />
             </div>
             <div className="upcoming mt-5">
-              <CardSection sectionName='movies' title='Upcoming' destination='' data={movies.moviesUpcoming} />
+              <CardSection sectionName='movies' title='Upcoming' destination='/movies/upcoming' data={movies.moviesUpcoming} />
             </div>
           </Container>
         </>

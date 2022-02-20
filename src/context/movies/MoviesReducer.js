@@ -7,6 +7,17 @@ const movieReducer = (state, action) => {
         moviesLoad: false
       }
 
+    case 'GET_MOVIES_SECTION':
+      const sectionName = `movies${action.payload.sectionName}`
+      return {
+        ...state,
+        movies: {
+          ...state.movies,
+          [sectionName]: action.payload.moviesData
+        },
+        moviesLoad: false
+      }
+
     case 'SET_LOADING':
       return {
         ...state,
