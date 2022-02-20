@@ -4,6 +4,7 @@ import HeaderSlider from '../components/header-slider/HeaderSlider'
 import MovieContext from '../context/movies/MoviesContext'
 import CardSection from '../components/cards/CardSection'
 import { getAllMovies } from '../context/movies/MoviesActions'
+import Spinner from '../components/layout/Spinner'
 
 function Movies() {
   const { movies, moviesLoad, dispatchMovie } = useContext(MovieContext)
@@ -20,7 +21,7 @@ function Movies() {
   return (
     <div>
       {
-        moviesLoad ? <h1>Loading...</h1>
+        moviesLoad ? <Spinner />
         :
         <>
           <HeaderSlider movies={movies.moviesNowPlaying} />

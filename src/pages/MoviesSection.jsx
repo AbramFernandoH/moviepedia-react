@@ -2,6 +2,7 @@ import { useEffect, useContext } from 'react'
 import CardGrid from '../components/cards/CardGrid'
 import { Container } from 'react-bootstrap'
 import MovieContext from '../context/movies/MoviesContext'
+import Spinner from '../components/layout/Spinner'
 import { getMoviesSection } from '../context/movies/MoviesActions'
 import { Link } from 'react-router-dom'
 import './MoviesSection.css'
@@ -21,7 +22,7 @@ function MoviesSection({ title = '' }) {
   }, [dispatchMovie, title])
 
   if(moviesLoad){
-    return <h1>Loading...</h1>
+    return <Spinner />
   }
 
   return (

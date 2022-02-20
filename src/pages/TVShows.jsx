@@ -4,6 +4,7 @@ import HeaderSlider from '../components/header-slider/HeaderSlider'
 import TVShowsContext from '../context/tvshows/TVShowsContext'
 import CardSection from '../components/cards/CardSection'
 import { getAllTvShows } from '../context/tvshows/TVShowsActions'
+import Spinner from '../components/layout/Spinner'
 
 function TVShows() {
   const { tvshows, tvshowsLoad, dispatchTvShow } = useContext(TVShowsContext)
@@ -20,7 +21,7 @@ function TVShows() {
   return (
     <div>
       {
-        tvshowsLoad ? <h1>Loading...</h1>
+        tvshowsLoad ? <Spinner />
         :
         <>
           <HeaderSlider movies={tvshows.tvShowsOnAir} />

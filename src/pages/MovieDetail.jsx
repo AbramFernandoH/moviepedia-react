@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { getMovieDetail } from '../context/movies/MoviesActions'
 import HeaderDetail from '../components/movie-detail/HeaderDetail'
 import MainDetail from '../components/movie-detail/MainDetail'
+import Spinner from '../components/layout/Spinner'
 
 function MovieDetail() {
   const [detail, setDetail] = useState({})
@@ -19,7 +20,7 @@ function MovieDetail() {
   }, [])
 
   if(loading){
-    return <h1>Loading...</h1>
+    return <Spinner />
   }
 
   const runtime = minutes => {

@@ -6,6 +6,7 @@ import MovieContext from '../context/movies/MoviesContext'
 import TVShowsContext from '../context/tvshows/TVShowsContext'
 import { getAllMovies } from '../context/movies/MoviesActions'
 import { getAllTvShows } from '../context/tvshows/TVShowsActions'
+import Spinner from '../components/layout/Spinner'
 
 function Homepage() {
   const { moviesLoad, dispatchMovie } = useContext(MovieContext)
@@ -43,7 +44,7 @@ function Homepage() {
   }
 
   if(moviesLoad && tvshowsLoad){
-    return <h1>Loading...</h1> 
+    return <Spinner />
   }
 
   return (
